@@ -1,5 +1,6 @@
 com\competeleak\summarizer\repository\UserRepository.class
 com\competeleak\summarizer\controller\SummarizeController$SummarizeRequest.class
+com\competeleak\summarizer\exception\RateLimitExceededException.class
 com\competeleak\summarizer\model\UsageRecord.class
 com\competeleak\summarizer\filter\ApiKeyAuthFilter.class
 com\competeleak\summarizer\config\SecurityConfig.class
@@ -7,12 +8,15 @@ com\competeleak\summarizer\service\UserService.class
 com\competeleak\summarizer\controller\AccountController$AccountStatus.class
 com\competeleak\summarizer\service\WebhookService.class
 com\competeleak\summarizer\controller\AccountController.class
+com\competeleak\summarizer\exception\GlobalExceptionHandler.class
 com\competeleak\summarizer\controller\SummarizeController.class
 com\competeleak\summarizer\service\SummarizeService$SummaryResponse.class
 com\competeleak\summarizer\service\SummarizeService.class
 com\competeleak\summarizer\config\LlmConfig.class
 com\competeleak\summarizer\repository\UsageRepository.class
 com\competeleak\summarizer\model\User.class
+com\competeleak\summarizer\service\SummarizeService$ClaudeRequest.class
 com\competeleak\summarizer\model\User$Tier.class
 com\competeleak\summarizer\SummarizerApplication.class
 com\competeleak\summarizer\controller\WebhookController.class
+com\competeleak\summarizer\service\SummarizeService$ClaudeMessage.class

@@ -3,6 +3,8 @@ C:\Users\mawhi\.vscode\VisualProjects\tabSummaryApi\src\main\java\com\competelea
 C:\Users\mawhi\.vscode\VisualProjects\tabSummaryApi\src\main\java\com\competeleak\summarizer\controller\AccountController.java
 C:\Users\mawhi\.vscode\VisualProjects\tabSummaryApi\src\main\java\com\competeleak\summarizer\controller\SummarizeController.java
 C:\Users\mawhi\.vscode\VisualProjects\tabSummaryApi\src\main\java\com\competeleak\summarizer\controller\WebhookController.java
+C:\Users\mawhi\.vscode\VisualProjects\tabSummaryApi\src\main\java\com\competeleak\summarizer\exception\GlobalExceptionHandler.java
+C:\Users\mawhi\.vscode\VisualProjects\tabSummaryApi\src\main\java\com\competeleak\summarizer\exception\RateLimitExceededException.java
 C:\Users\mawhi\.vscode\VisualProjects\tabSummaryApi\src\main\java\com\competeleak\summarizer\filter\ApiKeyAuthFilter.java
 C:\Users\mawhi\.vscode\VisualProjects\tabSummaryApi\src\main\java\com\competeleak\summarizer\model\UsageRecord.java
 C:\Users\mawhi\.vscode\VisualProjects\tabSummaryApi\src\main\java\com\competeleak\summarizer\model\User.java

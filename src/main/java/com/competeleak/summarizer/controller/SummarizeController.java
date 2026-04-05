@@ -30,8 +30,12 @@ public class SummarizeController {
             HttpServletRequest httpRequest) {
 
         User user = (User) httpRequest.getAttribute(ApiKeyAuthFilter.USER_ATTRIBUTE);
+        String clientIp = httpRequest.getHeader("X-Forwarded-For") != null
+                ? httpRequest.getHeader("X-Forwarded-For").split(",")[0].trim()
+                : httpRequest.getRemoteAddr();
+
         SummarizeService.SummaryResponse response = summarizeService.summarize(
-                request.url(), request.content(), user);
+                request.url(), request.content(), user, clientIp);
         return ResponseEntity.ok(response);
     }
 }
