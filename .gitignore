@@ -1,0 +1,19 @@
+# Maven build output — never commit compiled artifacts
+target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.classpath
+*.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local env overrides with real secrets — never commit these
+.env
+*.env.local
+src/main/resources/application-local.properties
