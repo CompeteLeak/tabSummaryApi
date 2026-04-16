@@ -3,29 +3,44 @@ package com.competeleak.summarizer.controller;
 import com.competeleak.summarizer.filter.ApiKeyAuthFilter;
 import com.competeleak.summarizer.model.User;
 import com.competeleak.summarizer.repository.UsageRepository;
+import com.competeleak.summarizer.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.YearMonth;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/account")
 public class AccountController {
 
     private final UsageRepository usageRepository;
+    private final UserRepository userRepository;
 
     @Value("${app.free-tier.monthly-limit}")
     private int freeTierLimit;
 
-    public AccountController(UsageRepository usageRepository) {
+    public AccountController(UsageRepository usageRepository, UserRepository userRepository) {
         this.usageRepository = usageRepository;
+        this.userRepository = userRepository;
     }
 
     public record AccountStatus(String tier, long usageCount, int limit) {}
+
+    /**
+     * Self-serve key lookup — user enters their purchase email and retrieves their API key.
+     * Only returns a key for PAID users.
+     */
+    @GetMapping("/key-lookup")
+    public ResponseEntity<Map<String, String>> keyLookup(@RequestParam String email) {
+        return userRepository.findByEmail(email.trim().toLowerCase())
+                .filter(u -> u.getTier() == User.Tier.PAID)
+                .map(u -> ResponseEntity.ok(Map.of("apiKey", u.getApiKey())))
+                .orElse(ResponseEntity.status(404)
+                        .body(Map.of("error", "No paid account found for that email. Check your email or complete a purchase.")));
+    }
 
     @GetMapping("/status")
     public ResponseEntity<AccountStatus> status(HttpServletRequest request) {

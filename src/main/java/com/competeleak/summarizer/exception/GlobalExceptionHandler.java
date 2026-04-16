@@ -30,6 +30,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(Map.of("error", message));
     }
 
+    @ExceptionHandler(SecurityException.class)
+    public ResponseEntity<Map<String, String>> handleWebhookSignature(SecurityException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("error", ex.getMessage()));
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleGeneral(Exception ex) {
         log.error("Unhandled exception", ex);
