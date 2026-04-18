@@ -70,6 +70,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Actuator — health check endpoint for Railway -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <!-- Swagger / OpenAPI UI -->
         <dependency>
             <groupId>org.springdoc</groupId>
