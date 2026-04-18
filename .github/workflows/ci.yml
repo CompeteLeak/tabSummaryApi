@@ -24,7 +24,10 @@ jobs:
           cache: 'maven'
 
       - name: Build and test
-        run: mvn clean verify
+        run: mvn clean verify -Dspring-boot.run.profiles=local
+        env:
+          LLM_API_KEY: dummy-key-for-ci
+          LEMON_SQUEEZY_WEBHOOK_SECRET: dummy-secret-for-ci
 
       - name: Upload test report on failure
         if: failure()
